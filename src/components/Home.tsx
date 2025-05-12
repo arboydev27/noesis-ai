@@ -12,7 +12,7 @@ import { PenIcon } from "lucide-react";
 
 const Home = () => {
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center text-center p-10">
+    <div className="h-screen w-full flex flex-col items-center justify-center text-center px-5">
       {/* w-screen limits the growth of inner containers */}
       {/*Pulsing Animation */}
       <div>
@@ -40,7 +40,7 @@ const Home = () => {
       </div>
 
       {/*Fixed GlssMorphic Prompt buttons */}
-      <div className="text-[#130261] text-xs md:text-base mt-6 flex flex-row gap-2 ">
+      <div className="text-[#130261] text-xs md:text-base mt-6 flex flex-row gap-1 ">
         {/* First button */}
         <GlassButton
           icon={
