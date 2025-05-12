@@ -1,6 +1,6 @@
 import Background from "@/components/Background";
 
-export default function Page() {
+export default function Home() {
   return (
     <main>
       <Background />
