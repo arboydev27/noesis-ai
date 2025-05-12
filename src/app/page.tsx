@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Background from "@/components/Background";
 
-export default function Home() {
+export default function Page() {
   return (
     <main>
       <Background />

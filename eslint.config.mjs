@@ -13,10 +13,4 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
 ];
 
-const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true, // ✅ disables ESLint during build
-  },
-};
-
 export default eslintConfig;
