@@ -32,7 +32,7 @@ const Sidebar = ({
     <div
       // className={`fixed top-0 left-0 h-full w-64 mx-10 bg-white rounded-4xl shadow-md z-30 transform transition-transform duration-300 ${
       className={`fixed top-4 left-4 h-[calc(100%-2rem)] w-80 p-5 bg-[#E8E6ED] border border-[#441C9A] rounded-4xl z-30 transform transition-transform duration-300 ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
+        isOpen ? "translate-x-0" : "-translate-x-[calc(100%+1rem)]"
       } shadow-2xl ring-1 ring-white/30`}
     >
       {/* User Profile and Settings Div */}
