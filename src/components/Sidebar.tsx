@@ -100,7 +100,7 @@ const Sidebar = ({
 
       {/* Chat items with framer motion */}
       <div className="relative flex-1 overflow-hidden">
-        <div className="h-full overflow-y-auto pr-1 pb-8 pt-4 space-y-2">
+        <div className="h-full overflow-y-auto pr-0 pb-8 pt-4 space-y-2">
           {chats.map((chat, i) => (
             <ChatItem
               key={i}
