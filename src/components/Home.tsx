@@ -3,12 +3,6 @@ import ClientWrapper from "@/components/ClientWrapper";
 import PromptBox from "@/components/PromptBox";
 import GlassButton from "@/components/GlassButton";
 import Image from "next/image";
-import {
-  LightBulbIcon,
-  SparklesIcon,
-  ChatBubbleLeftRightIcon,
-} from "@heroicons/react/24/solid";
-import { PenIcon } from "lucide-react";
 
 const Home = () => {
   return (
