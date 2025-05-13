@@ -22,6 +22,13 @@ const Sidebar = ({
     "Help me plan a trip",
     "Help me plan a trip",
     "Help me plan a trip",
+    "Creating a HTML based Game Engine",
+    "Best vacation destinations for 2025",
+    "How does ChatGPT work?",
+    "Help me plan a trip",
+    "Help me plan a trip",
+    "Help me plan a trip",
+    "Help me plan a trip",
   ]);
 
   const handleDelete = (index: number) => {
@@ -33,7 +40,7 @@ const Sidebar = ({
       // className={`fixed top-0 left-0 h-full w-64 mx-10 bg-white rounded-4xl shadow-md z-30 transform transition-transform duration-300 ${
       className={`fixed top-4 left-4 h-[calc(100%-2rem)] w-80 p-5 bg-[#E8E6ED] border border-[#441C9A] rounded-4xl z-30 transform transition-transform duration-300 ${
         isOpen ? "translate-x-0" : "-translate-x-[calc(100%+1rem)]"
-      } shadow-2xl ring-1 ring-white/30`}
+      } shadow-2xl ring-1 ring-white/30 flex flex-col`}
     >
       {/* User Profile and Settings Div */}
       <div className="w-auto h-22 bg-white rounded-2xl p-4 flex flex-row items-center justify-between">
@@ -92,15 +99,22 @@ const Sidebar = ({
       </div> */}
 
       {/* Chat items with framer motion */}
-      <div className="pt-4 space-y-2">
-        {chats.map((chat, i) => (
-          <ChatItem
-            key={i}
-            text={chat}
-            onEdit={() => console.log(`Edit chat ${i}`)}
-            onDelete={() => handleDelete(i)}
-          />
-        ))}
+      <div className="relative flex-1 overflow-hidden">
+        <div className="h-full overflow-y-auto pr-1 pb-8 pt-4 space-y-2">
+          {chats.map((chat, i) => (
+            <ChatItem
+              key={i}
+              text={chat}
+              onEdit={() => console.log(`Edit chat ${i}`)}
+              onDelete={() => handleDelete(i)}
+            />
+          ))}
+        </div>
+        {/* Fade gradient overlay */}
+        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#E8E6ED] to-transparent" />
+
+        {/* Top fade */}
+        <div className="pointer-events-none absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-[#E8E6ED] to-transparent" />
       </div>
 
       {/* <ul className="p-4 space-y-2">
