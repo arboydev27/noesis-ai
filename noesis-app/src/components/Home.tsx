@@ -160,6 +160,7 @@ const Home = ({
   const scrollToBottom = () => {
     bottomRef.current?.scrollIntoView({
       behavior: "smooth",
+      block: "end",
     });
   };
 
@@ -289,7 +290,7 @@ const Home = ({
                 </div>
               </div>
             ))}
-            {/* <div ref={bottomRef} /> */}
+            <div ref={bottomRef} className="h-36" />
           </div>
         )}
       </div>

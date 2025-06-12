@@ -16,7 +16,7 @@ interface ChatItemProps {
 // const ChatItem = ({ text, onEdit, onDelete }: ChatItemProps) => {
 const ChatItem = ({ text, onClick, onDelete }: ChatItemProps) => {
   const x = useMotionValue(0);
-  const pacity = useTransform(x, [-100, 0], [1, 0]);
+  const opacity = useTransform(x, [-100, 0], [1, 0]);
 
   return (
     <div className="relative w-full h-9 overflow-hidden rounded-xl cursor-pointer">
