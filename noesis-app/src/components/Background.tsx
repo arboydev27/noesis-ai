@@ -31,11 +31,11 @@ const Background = () => {
     setChatMessages([]);
   };
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const handleSelectChat = async (sessionId: number) => {
     try {
-      const res = await fetch(
-        `http://localhost:3333/chat-sessions/${sessionId}`
-      );
+      const res = await fetch(`/api/chat-sessions/${sessionId}`);
       const data = await res.json();
 
       const messages = data.messages.map((msg: any) => ({
@@ -58,7 +58,7 @@ const Background = () => {
 
   useEffect(() => {
     const fetchChats = async () => {
-      const res = await fetch("http://localhost:3333/chat-sessions");
+      const res = await fetch(`/api/chat-sessions`);
       const sessions = await res.json();
 
       if (!Array.isArray(sessions)) {

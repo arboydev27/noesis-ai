@@ -79,6 +79,8 @@ const Home = ({
     simulateStreaming(fullResponse, currentIndex);
   };
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   const handlePromptSubmit = async (userPrompt: string) => {
     setIsStreaming(true);
     setHasPromptBeenSubmitted(true);
@@ -95,7 +97,8 @@ const Home = ({
       ]);
 
       if (!sessionId) {
-        const res = await fetch("http://localhost:3333/chat-sessions", {
+        // const res = await fetch(`${API_URL}/chat-sessions`, {
+        const res = await fetch(`/api/chat-sessions`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userId: 1, content: userPrompt }),
@@ -110,7 +113,7 @@ const Home = ({
           simulateStreaming(data.reply.content);
         }, 700); // 300ms delay to show typing dots
       } else {
-        const res = await fetch("http://localhost:3333/chat-messages", {
+        const res = await fetch(`/api/chat-messages`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -128,7 +131,7 @@ const Home = ({
         }, 700); // 300ms delay to show typing dots
       }
 
-      const chatRes = await fetch("http://localhost:3333/chat-sessions");
+      const chatRes = await fetch("/api/chat-sessions");
       const chatData = await chatRes.json();
 
       // Transform: extract first user message per session before calling setChats

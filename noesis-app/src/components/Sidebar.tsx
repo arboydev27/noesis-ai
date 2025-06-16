@@ -26,8 +26,9 @@ const Sidebar = ({
   setIsSearchOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const handleDelete = async (id: number) => {
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     try {
-      await fetch(`http://localhost:3333/chat-sessions/${id}`, {
+      await fetch(`/api/chat-sessions/${id}`, {
         method: "DELETE",
       });
       setChats((prev) => prev.filter((chat) => chat.id !== id));

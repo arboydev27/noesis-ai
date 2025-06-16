@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.11
+    command:
+      - --providers.docker
+      - --entrypoints.web.address=:80
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  frontend:
+    build: ./noesis-app
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.frontend.rule=Host(`localhost`)
+      - traefik.http.services.frontend.loadbalancer.server.port=3000
+    depends_on:
+      - backend
+
+  backend:
+    build: ./noesis-api
+    env_file:
+      - ./noesis-api/.env
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.backend.rule=Host(`localhost`) && PathPrefix(`/api`)
+      - traefik.http.routers.backend.middlewares=strip-api
+      - traefik.http.middlewares.strip-api.stripprefix.prefixes=/api
+      - traefik.http.services.backend.loadbalancer.server.port=3333
+    depends_on:
+      - postgres
+      - ollama
+
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: noesis_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    labels:
+      - traefik.enable=false
+
+  ollama:
+    image: ollama/ollama
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "ollama serve & sleep 5 && ollama pull llama3.2 && wait"
+    volumes:
+      - ollama_data:/root/.ollama
+    labels:
+      - traefik.enable=false
+
+volumes:
+  pgdata:
+  ollama_data:
