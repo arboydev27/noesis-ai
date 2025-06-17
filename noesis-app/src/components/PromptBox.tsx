@@ -48,7 +48,7 @@ const PromptBox = ({
     <form
       onSubmit={handleSubmit} // handleSubmit function
       //   className="mt-8 w-full max-w-md sm:max-w-md md:max-w-lg lg:max-w-3xl mx-auto flex items-center border rounded-full px-1.5 py-2 shadow-md bg-white"
-      className="mt-0 w-full max-w-lg lg:max-w-3xl mx-auto flex items-center border rounded-3xl px-1.5 py-5 shadow-md bg-white"
+      className="mt-0 w-full max-w-lg lg:max-w-2xl mx-auto flex items-center border rounded-3xl px-1.5 py-5 shadow-md bg-white"
     >
       <input
         type="text"

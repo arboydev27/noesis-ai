@@ -31,11 +31,12 @@ const Background = () => {
     setChatMessages([]);
   };
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
 
   const handleSelectChat = async (sessionId: number) => {
     try {
-      const res = await fetch(`/api/chat-sessions/${sessionId}`);
+      // const res = await fetch(`/api/chat-sessions/${sessionId}`); // Used for containerized version
+      const res = await fetch(`${API_URL}/chat-sessions/${sessionId}`);
       const data = await res.json();
 
       const messages = data.messages.map((msg: any) => ({
@@ -58,7 +59,8 @@ const Background = () => {
 
   useEffect(() => {
     const fetchChats = async () => {
-      const res = await fetch(`/api/chat-sessions`);
+      // const res = await fetch(`/api/chat-sessions`); // Used for containerized version
+      const res = await fetch(`${API_URL}/chat-sessions`);
       const sessions = await res.json();
 
       if (!Array.isArray(sessions)) {

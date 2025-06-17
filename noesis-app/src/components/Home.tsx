@@ -79,7 +79,7 @@ const Home = ({
     simulateStreaming(fullResponse, currentIndex);
   };
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
 
   const handlePromptSubmit = async (userPrompt: string) => {
     setIsStreaming(true);
@@ -97,8 +97,8 @@ const Home = ({
       ]);
 
       if (!sessionId) {
-        // const res = await fetch(`${API_URL}/chat-sessions`, {
-        const res = await fetch(`/api/chat-sessions`, {
+        // const res = await fetch(`/api/chat-sessions` - Used for containerized version
+        const res = await fetch(`${API_URL}/chat-sessions`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userId: 1, content: userPrompt }),
@@ -113,7 +113,8 @@ const Home = ({
           simulateStreaming(data.reply.content);
         }, 700); // 300ms delay to show typing dots
       } else {
-        const res = await fetch(`/api/chat-messages`, {
+        // const res = await fetch(`/api/chat-messages` - Used for containerized version
+        const res = await fetch(`${API_URL}/chat-messages`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -131,7 +132,8 @@ const Home = ({
         }, 700); // 300ms delay to show typing dots
       }
 
-      const chatRes = await fetch("/api/chat-sessions");
+      // const chatRes = await fetch(`/api/chat-sessions`); // Used for containerized version
+      const chatRes = await fetch(`${API_URL}/chat-sessions`);
       const chatData = await chatRes.json();
 
       // Transform: extract first user message per session before calling setChats
@@ -179,7 +181,7 @@ const Home = ({
           <div className="flex flex-col items-center justify-center w-full flex-grow">
             <ClientWrapper />
 
-            <h1 className="text-[#130261] p-2 text-3xl font-bold md:text-4xl lg:text-5xl xl:text-6xl">
+            <h1 className="text-[#130261] p-2 text-3xl font-bold md:text-4xl lg:text-4xl xl:text-5xl">
               Hi there!
               <br /> How can I{" "}
               <span className="bg-gradient-to-r from-[#130261] to-[#9747FF] bg-clip-text text-transparent">
@@ -188,7 +190,7 @@ const Home = ({
               you today?
             </h1>
 
-            <p className="text-[#666666] p-2 md:text-lg">
+            <p className="text-[#666666] p-2 md:text-md">
               I'm Noesis, ready to assist you with your <br /> everyday work and
               tasks
             </p>

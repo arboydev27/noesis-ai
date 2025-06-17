@@ -9,7 +9,7 @@ interface NavbarProps {
 const Navbar = ({ toggleSidebar }: NavbarProps) => {
   return (
     // <div className="p-10 md:px-20 lg:px-20 xl:px-40 flex flex-row items-center justify-between"> // Pushes content below it downwards
-    <div className="absolute top-0 left-0 w-full p-3 md:p-6 px-10 md:px-15 lg:px-20 xl:px-25 flex flex-row items-center justify-between z-20 bg-white/20 text-[#130261] backdrop-blur-md shadow-md ring-1 ring-white/30 hover:bg-white/30 transition-all">
+    <div className="absolute top-0 left-0 w-full p-3 md:p-5 px-10 md:px-15 lg:px-20 xl:px-25 flex flex-row items-center justify-between z-20 bg-white/20 text-[#130261] backdrop-blur-md shadow-md ring-1 ring-white/30 hover:bg-white/30 transition-all">
       {" "}
       {/* Floats the navbar at the top and Ensures it stays above other things *}
       {/* LOGO */}
