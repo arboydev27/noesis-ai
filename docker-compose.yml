@@ -12,7 +12,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   frontend:
-    build: ./noesis-app
+    # build: ./noesis-app
+    image: arboydev27/noesis-ai-frontend:latest
     labels:
       - traefik.enable=true
       - traefik.http.routers.frontend.rule=Host(`localhost`)
@@ -21,7 +22,8 @@ services:
       - backend
 
   backend:
-    build: ./noesis-api
+    # build: ./noesis-api
+    image: arboydev27/noesis-ai-backend:latest
     env_file:
       - ./noesis-api/.env
     labels:
