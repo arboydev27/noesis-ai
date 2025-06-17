@@ -182,7 +182,7 @@ const Home = ({
           <div className="flex flex-col items-center justify-center w-full flex-grow">
             <ClientWrapper />
 
-            <h1 className="text-[#130261] p-2 text-3xl font-bold md:text-3xl lg:text-3xl xl:text-5xl">
+            <h1 className="text-[#130261] p-2 text-2xl font-bold md:text-3xl lg:text-3xl xl:text-4xl">
               Hi there!
               <br /> How can I{" "}
               <span className="bg-gradient-to-r from-[#130261] to-[#9747FF] bg-clip-text text-transparent">
@@ -191,7 +191,7 @@ const Home = ({
               you today?
             </h1>
 
-            <p className="text-[#666666] p-2 md:text-md">
+            <p className="text-[#666666] pt-2 md:text-sm">
               I'm Noesis, ready to assist you with your <br /> everyday work and
               tasks
             </p>
