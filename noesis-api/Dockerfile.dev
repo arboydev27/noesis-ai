@@ -8,4 +8,6 @@ RUN npm install
 COPY . .
 
 EXPOSE 3333
-CMD ["node", "ace", "serve"]
+
+# Use ESM mode + --watch for hot reload in dev
+CMD ["node", "ace", "serve", "--watch"]

@@ -12,8 +12,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   frontend:
-    # build: ./noesis-app
-    image: arboydev27/noesis-ai-frontend:latest
+    build: 
+      context: ./noesis-app
+      dockerfile: Dockerfile.dev
+    # image: arboydev27/noesis-ai-frontend:latest
     develop:
       watch:
         - path: ./noesis-app
@@ -27,8 +29,10 @@ services:
       - backend
 
   backend:
-    # build: ./noesis-api
-    image: arboydev27/noesis-ai-backend:latest
+    build:
+      context: ./noesis-api
+      dockerfile: Dockerfile.dev
+    # image: arboydev27/noesis-ai-backend:latest
     env_file:
       - ./noesis-api/.env
     develop:

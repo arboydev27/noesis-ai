@@ -27,6 +27,7 @@ const Sidebar = ({
 }) => {
   const handleDelete = async (id: number) => {
     const API_URL = process.env.NEXT_PUBLIC_API_URL || "/api";
+    // const API_URL = "/api";
     try {
       //  await fetch(`/api/chat-sessions/${id}` - Used for containerized version
       await fetch(`${API_URL}/chat-sessions/${id}`, {

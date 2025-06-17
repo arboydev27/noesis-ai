@@ -1,0 +1,16 @@
+# Install dependencies
+FROM node:lts-alpine
+
+WORKDIR /app
+
+# Install all dependencies, not just production
+COPY package*.json ./
+RUN npm install
+
+# Copy rest of the code
+COPY . .
+
+# Expose Next.js dev port
+EXPOSE 3000
+# Use Next.js dev server
+CMD ["npm", "run", "dev"]
