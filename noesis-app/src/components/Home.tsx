@@ -181,7 +181,7 @@ const Home = ({
           <div className="flex flex-col items-center justify-center w-full flex-grow">
             <ClientWrapper />
 
-            <h1 className="text-[#130261] p-2 text-3xl font-bold md:text-4xl lg:text-4xl xl:text-5xl">
+            <h1 className="text-[#130261] p-2 text-3xl font-bold md:text-3xl lg:text-3xl xl:text-5xl">
               Hi there!
               <br /> How can I{" "}
               <span className="bg-gradient-to-r from-[#130261] to-[#9747FF] bg-clip-text text-transparent">
