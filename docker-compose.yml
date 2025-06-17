@@ -14,6 +14,10 @@ services:
   frontend:
     # build: ./noesis-app
     image: arboydev27/noesis-ai-frontend:latest
+    develop:
+      watch:
+        - path: ./noesis-app
+          action: rebuild
     labels:
       - traefik.enable=true
       - traefik.http.routers.frontend.rule=Host(`localhost`)
@@ -26,6 +30,10 @@ services:
     image: arboydev27/noesis-ai-backend:latest
     env_file:
       - ./noesis-api/.env
+    develop:
+      watch:
+        - path: ./noesis-api
+          action: rebuild
     labels:
       - traefik.enable=true
       - traefik.http.routers.backend.rule=Host(`localhost`) && PathPrefix(`/api`)
