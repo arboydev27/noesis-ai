@@ -17,6 +17,7 @@ services:
     develop:
       watch:
         - path: ./noesis-app
+          target: /app
           action: sync
     labels:
       - traefik.enable=true
@@ -33,6 +34,7 @@ services:
     develop:
       watch:
         - path: ./noesis-api
+          target: /app
           action: sync
     
     labels:
