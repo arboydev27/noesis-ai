@@ -1,6 +1,6 @@
 # 🧠 Noesis AI
 
-**Noesis AI is a local-first conversational AI assistant that runs entirely on your machine — built with **Next.js**, **AdonisJS**, **PostgreSQL**, and a blazing-fast local LLM (**Llama3.2**) powered via **Ollama\*\*. It offers real-time, multi-turn chat experiences with full control over your data. Designed for speed, privacy, and personalization, Noesis AI brings the power of modern LLMs to your fingertips, no cloud required.
+**Noesis AI is a local-first conversational AI assistant that runs entirely on your machine** — built with **Next.js**, **AdonisJS**, **PostgreSQL**, and a blazing-fast local LLM (**Llama3.2**) powered via **Ollama**. It offers real-time, multi-turn chat experiences with full control over your data. Designed for speed, privacy, and personalization, Noesis AI brings the power of modern LLMs to your fingertips, no cloud required.
 
 <div align="center">
   <img src="https://img.shields.io/badge/Frontend-Next.js-000?logo=nextdotjs&logoColor=white" />
@@ -150,8 +150,6 @@ noesis-ai/
   <img src="previews/preview3.png" width="35%" alt="Mobile view of the sidebar with full responsiveness" />
   <img src="previews/preview4.png" width="32%" alt="Mobile view of the chat with full responsiveness" />
 </p>
-
-Example: Streamed prompt interaction, Sidebar history, PromptBox behavior, etc.
 
 ---
 
