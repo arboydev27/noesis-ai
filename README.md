@@ -142,13 +142,13 @@ noesis-ai/
 ## 📸 Screenshots
 
 <p float="left">
-  <img src="previews/preview1.png" width="45%" alt="Landing page view showing an animation and a prompt searching box" />
-  <img src="previews/preview2.png" width="45%" alt="View of the conversation between a user and the LLM" />
+  <img src="previews/preview1.png" width="65%" alt="Landing page view showing an animation and a prompt searching box" />
+  <img src="previews/preview2.png" width="65%" alt="View of the conversation between a user and the LLM" />
 </p>
 
 <p float="left">
-  <img src="previews/preview3.png" width="45%" alt="Mobile view of the sidebar with full responsiveness" />
-  <img src="previews/preview4.png" width="45%" alt="Mobile view of the chat with full responsiveness" />
+  <img src="previews/preview3.png" width="35%" alt="Mobile view of the sidebar with full responsiveness" />
+  <img src="previews/preview4.png" width="35%" alt="Mobile view of the chat with full responsiveness" />
 </p>
 
 Example: Streamed prompt interaction, Sidebar history, PromptBox behavior, etc.
