@@ -148,7 +148,7 @@ noesis-ai/
 
 <p float="left">
   <img src="previews/preview3.png" width="35%" alt="Mobile view of the sidebar with full responsiveness" />
-  <img src="previews/preview4.png" width="31%" alt="Mobile view of the chat with full responsiveness" />
+  <img src="previews/preview4.png" width="33%" alt="Mobile view of the chat with full responsiveness" />
 </p>
 
 Example: Streamed prompt interaction, Sidebar history, PromptBox behavior, etc.
