@@ -1,10 +1,13 @@
 import Background from "@/components/Background";
 import FadeIn from "@/components/FadeIn";
+import { AuthProvider } from "@/auth/auth-context";
 
 export default function Home() {
   return (
     <main>
-      <Background />
+      <AuthProvider>
+        <Background />
+      </AuthProvider>
     </main>
   );
 }

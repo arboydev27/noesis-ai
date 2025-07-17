@@ -2,12 +2,16 @@
 
 import { useEffect } from "react";
 import React, { useState } from "react";
+import { useAuth } from "@/auth/auth-context";
+import AuthForm from "@/auth/authform";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import Home from "@/components/Home";
 import SearchOverlay from "@/components/SearchOverlay";
 
 const Background = () => {
+  const { isAuthenticated } = useAuth();
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [chats, setChats] = useState<
     { id: number; prompt: string; createdAt: string }[]
@@ -89,61 +93,66 @@ const Background = () => {
   }, []);
 
   return (
-    <div className="relative inset-0 overflow-hidden h-screen w-screen bg-gradient-to-bl from-purple-200 via-purple-50 to-white z-0">
-      {/* Glows */}
-      <div className="absolute -top-[400px] -right-[400px] w-[1000px] h-[1000px] bg-[radial-gradient(circle,_#d0d1ff_0%,_transparent_70%)] pointer-events-none z-0" />
-      <div className="absolute -bottom-[400px] -left-[400px] w-[1000px] h-[1000px] bg-[radial-gradient(circle,_#d0d1ff_0%,_transparent_70%)] pointer-events-none z-0" />
+    <>
+      {!isAuthenticated && <AuthForm />}
+      {isAuthenticated && (
+        <div className="relative inset-0 overflow-hidden h-screen w-screen bg-gradient-to-bl from-purple-200 via-purple-50 to-white z-0">
+          {/* Glows */}
+          <div className="absolute -top-[400px] -right-[400px] w-[1000px] h-[1000px] bg-[radial-gradient(circle,_#d0d1ff_0%,_transparent_70%)] pointer-events-none z-0" />
+          <div className="absolute -bottom-[400px] -left-[400px] w-[1000px] h-[1000px] bg-[radial-gradient(circle,_#d0d1ff_0%,_transparent_70%)] pointer-events-none z-0" />
 
-      {/* Sidebar: now inside this file */}
-      <Sidebar
-        isOpen={isSidebarOpen}
-        toggleSidebar={toggleSidebar}
-        chats={chats}
-        setChats={setChats}
-        onSelectChat={handleSelectChat}
-        onNewChat={handleBeginNewChat}
-        setIsSearchOpen={setIsSearchOpen}
-      />
+          {/* Sidebar: now inside this file */}
+          <Sidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            chats={chats}
+            setChats={setChats}
+            onSelectChat={handleSelectChat}
+            onNewChat={handleBeginNewChat}
+            setIsSearchOpen={setIsSearchOpen}
+          />
 
-      {isSidebarOpen && (
-        <div
-          className="lg:hidden fixed inset-0 backdrop-blur-sm bg-white/10 z-20 transition-all"
-          onClick={toggleSidebar}
-        />
+          {isSidebarOpen && (
+            <div
+              className="lg:hidden fixed inset-0 backdrop-blur-sm bg-white/10 z-20 transition-all"
+              onClick={toggleSidebar}
+            />
+          )}
+
+          {/* Main content */}
+          <div
+            // ==========================================
+            // lg:ml-80: applies the margin-left only on lg and up (1024px+)
+            // On smaller screens, margin stays ml-0 → sidebar overlays the content
+            // No need to manually detect screen size or write custom logic
+            // =========================================
+            className={`relative z-10 transition-all duration-300 ${
+              isSidebarOpen ? "lg:ml-80" : ""
+            }`}
+          >
+            <Navbar toggleSidebar={toggleSidebar} />
+            <Home
+              setChats={setChats}
+              currentSessionId={currentSessionId}
+              setCurrentSessionId={setCurrentSessionId}
+              chatMessages={chatMessages}
+              setChatMessages={setChatMessages}
+            />
+          </div>
+
+          {isSearchOpen && (
+            <SearchOverlay
+              onClose={() => setIsSearchOpen(false)}
+              chats={chats} // must include createdAt from backend
+              onSelectChat={(id) => {
+                handleSelectChat(id);
+                setIsSearchOpen(false);
+              }}
+            />
+          )}
+        </div>
       )}
-
-      {/* Main content */}
-      <div
-        // ==========================================
-        // lg:ml-80: applies the margin-left only on lg and up (1024px+)
-        // On smaller screens, margin stays ml-0 → sidebar overlays the content
-        // No need to manually detect screen size or write custom logic
-        // =========================================
-        className={`relative z-10 transition-all duration-300 ${
-          isSidebarOpen ? "lg:ml-80" : ""
-        }`}
-      >
-        <Navbar toggleSidebar={toggleSidebar} />
-        <Home
-          setChats={setChats}
-          currentSessionId={currentSessionId}
-          setCurrentSessionId={setCurrentSessionId}
-          chatMessages={chatMessages}
-          setChatMessages={setChatMessages}
-        />
-      </div>
-
-      {isSearchOpen && (
-        <SearchOverlay
-          onClose={() => setIsSearchOpen(false)}
-          chats={chats} // must include createdAt from backend
-          onSelectChat={(id) => {
-            handleSelectChat(id);
-            setIsSearchOpen(false);
-          }}
-        />
-      )}
-    </div>
+    </>
   );
 };
 
